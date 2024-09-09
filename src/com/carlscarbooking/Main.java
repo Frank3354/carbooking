@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-//        boolean isRunning = true;
         int userEntry;
         var input = new Scanner(System.in);
 
