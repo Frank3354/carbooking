@@ -1,6 +1,8 @@
 package com.carlscarbooking.user;
 
-public class UserDAO {
+import com.carlscarbooking.user.dto.User;
+
+class UserDAO {
     private static final User[] users;
 
     static {
@@ -9,7 +11,7 @@ public class UserDAO {
         };
     }
 
-    public static User getUser() {
+    protected static User getUser() {
         return users[0];
     }
 }

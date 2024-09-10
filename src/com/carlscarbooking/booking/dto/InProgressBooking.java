@@ -1,6 +1,6 @@
-package com.carlscarbooking.booking;
+package com.carlscarbooking.booking.dto;
 
-import com.carlscarbooking.user.User;
+import com.carlscarbooking.user.dto.User;
 
 import java.util.Date;
 

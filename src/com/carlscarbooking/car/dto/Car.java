@@ -1,6 +1,7 @@
-package com.carlscarbooking.car;
+package com.carlscarbooking.car.dto;
 
-import com.carlscarbooking.booking.Booking;
+import com.carlscarbooking.booking.dto.Booking;
+import com.carlscarbooking.car.EngineType;
 
 import java.util.UUID;
 
