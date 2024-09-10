@@ -1,14 +1,8 @@
 package com.carlscarbooking.menu;
 
-import com.carlscarbooking.booking.BookingDAO;
-import com.carlscarbooking.booking.BookingStatus;
-import com.carlscarbooking.booking.ConfirmedBooking;
+import com.carlscarbooking.booking.BookingService;
 import com.carlscarbooking.car.Car;
-import com.carlscarbooking.car.CarDAO;
-import com.carlscarbooking.user.UserDAO;
-
-import java.util.Date;
-import java.util.Objects;
+import com.carlscarbooking.car.CarService;
 
 public class MenuService {
 
@@ -29,26 +23,38 @@ public class MenuService {
             displayAvailableCars();
         } else if (optionNumber == MenuOption.BOOK_CAR.getValue()) {
             createBooking();
+        } else if (optionNumber == MenuOption.VIEW_ALL_USER_BOOKED_CARS.getValue()) {
+            displayBookedCars();
         }
     }
 
     private static void createBooking() {
-        int oneDayInMs = 1000 * 60 * 60 * 24;
-        var booking = BookingDAO.createBooking(new ConfirmedBooking(UserDAO.getUser()));
-
-        booking.setBookedCar(CarDAO.getCars()[0]);
-        booking.setBookingStatus(BookingStatus.CONFIRMED);
-        booking.setReservationStartDateTime(new Date());
-        booking.setReservationEndDateTime(new Date(new Date().getTime() + oneDayInMs * 3));
-        System.out.println(booking);
+        BookingService.createBooking();
     }
 
     private static void displayAvailableCars() {
         int count = 1;
-
         var output = new StringBuilder();
 
-        for(Car car: CarDAO.getCars()) {
+        for(Car car: CarService.getAllCars()) {
+            output.append(count++).append(". ").append(car.toString()).append("\n");
+        }
+
+        System.out.println(output);
+    }
+
+    private static void displayBookedCars() {
+        int count = 1;
+        var output = new StringBuilder();
+        var cars = CarService.getAllBookedCars();
+
+        if(cars.length == 0) {
+            output.append("No booked cars\n");
+            System.out.println(output);
+            return;
+        }
+
+        for(Car car: cars) {
             output.append(count++).append(". ").append(car.toString()).append("\n");
         }
 

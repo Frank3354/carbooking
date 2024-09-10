@@ -39,6 +39,7 @@ public class Booking {
 
     public void setBookedCar(Car bookedCar) {
         this.bookedCar = bookedCar;
+        bookedCar.setBooking(this);
     }
 
     public BookingStatus getBookingStatus() {
