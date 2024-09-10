@@ -2,7 +2,7 @@ package com.carlscarbooking.car;
 
 import java.util.Arrays;
 
-public class CarDAO {
+class CarDAO {
     private static final Car[] cars;
 
     static {
@@ -15,7 +15,15 @@ public class CarDAO {
         };
     }
 
-    public static Car[] getCars() {
+    protected static Car[] getAllCars() {
         return Arrays.copyOf(cars, cars.length);
+    }
+
+    protected static Car[] getAllBookedCars() {
+        return Arrays
+                .stream(cars)
+                .filter(car -> car.getBooking() != null)
+                .toArray(Car[]::new);
+
     }
 }
