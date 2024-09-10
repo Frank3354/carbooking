@@ -4,8 +4,7 @@
 
 1. Book a car
 2. View all booked cars
-
-[//]: # (3. View all bookings &#40;Soon&#41;)
+3. View all bookings 
 
 [//]: # (4. View available cars)
 
