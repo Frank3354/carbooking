@@ -23,7 +23,6 @@ public class MenuService {
      */
     public static void handleOption(int optionNumber) {
         if (optionNumber == MenuOption.VIEW_AVAILABLE_CARS.getValue()) {
-            System.out.println("Inside executeOption if block");
             displayAvailableCars();
         } else if (optionNumber == MenuOption.BOOK_CAR.getValue()) {
             createBooking();
@@ -63,7 +62,7 @@ public class MenuService {
      * Displays a list of available cars
      */
     private static void displayAvailableCars() {
-        var cars = CarService.getAllCars();
+        var cars = CarService.getAvailableCars();
 
         if (cars.length == 0) {
             System.out.println("\n\nNo available cars\n\n");

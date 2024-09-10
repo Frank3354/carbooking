@@ -1,7 +1,8 @@
-package com.carlscarbooking.booking;
+package com.carlscarbooking.booking.dto;
 
-import com.carlscarbooking.car.Car;
-import com.carlscarbooking.user.User;
+import com.carlscarbooking.booking.BookingStatus;
+import com.carlscarbooking.car.dto.Car;
+import com.carlscarbooking.user.dto.User;
 
 import java.util.Date;
 import java.util.UUID;

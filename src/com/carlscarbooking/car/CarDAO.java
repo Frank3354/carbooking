@@ -1,5 +1,7 @@
 package com.carlscarbooking.car;
 
+import com.carlscarbooking.car.dto.Car;
+
 import java.util.Arrays;
 
 class CarDAO {
@@ -25,5 +27,12 @@ class CarDAO {
                 .filter(car -> car.getBooking() != null)
                 .toArray(Car[]::new);
 
+    }
+
+    public static Car[] getAvailableCars() {
+        return Arrays
+                .stream(cars)
+                .filter(car -> car.getBooking() == null)
+                .toArray(Car[]::new);
     }
 }
