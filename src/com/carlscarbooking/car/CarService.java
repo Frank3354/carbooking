@@ -15,4 +15,8 @@ public class CarService {
     public static Car[] getAvailableCars() {
         return CarDAO.getAvailableCars();
     }
+
+    public static Car[] getAvailableElectricCars() {
+        return CarDAO.getAvailableElectricCars();
+    }
 }

@@ -30,6 +30,8 @@ public class MenuService {
             displayBookedCars();
         } else if (optionNumber == MenuOption.VIEW_ALL_BOOKINGS.getValue()) {
             displayAllBookings();
+        } else if (optionNumber == MenuOption.VIEW_AVAILABLE_ELECTRIC_CARS.getValue()) {
+            displayAvailableElectricCars();
         }
     }
 
@@ -73,6 +75,23 @@ public class MenuService {
                 \n
                 ##################
                 Available cars:
+                """);
+
+        displayItems(cars);
+    }
+
+    private static void displayAvailableElectricCars() {
+        var cars = CarService.getAvailableElectricCars();
+
+        if (cars.length == 0) {
+            System.out.println("\n\nNo available electric cars\n\n");
+            return;
+        }
+
+        System.out.println("""
+                \n
+                ##################
+                Available electric cars:
                 """);
 
         displayItems(cars);

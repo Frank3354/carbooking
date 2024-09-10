@@ -1,21 +1,17 @@
 ## Description
 
-## Linked issues
+## Linked issues and projects
 
 - [Issue-###](https://github.com/Frank3354/carbooking/issues/###)
+- [Associated Project](https://github.com/users/Frank3354/projects/###)
 
 ## Type of change
 
-<input type="radio" id="newFeature" name="typeOfChange" value="New Feature" />
-<label for="newFeature">New Feature</label>
-<br />
-<input type="radio" id="maintenance" name="typeOfChange" value="New Feature" />
-<label for="maintenance">Maintenance</label>
-<br />
-<input type="radio" id="bugFix" name="typeOfChange" value="New Feature" />
-<label for="bugFix">Bug Fix</label>
+(Delete those that are not applicable)
+- New feature 
+- Bug fix
+- Maintenance
 
 ---
 ## Testing Steps
 
-- TBD
