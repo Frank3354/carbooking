@@ -2,6 +2,7 @@ package com.carlscarbooking.menu;
 
 import com.carlscarbooking.booking.BookingService;
 import com.carlscarbooking.car.CarService;
+import com.carlscarbooking.user.UserService;
 
 public class MenuService {
 
@@ -32,6 +33,8 @@ public class MenuService {
             displayAllBookings();
         } else if (optionNumber == MenuOption.VIEW_AVAILABLE_ELECTRIC_CARS.getValue()) {
             displayAvailableElectricCars();
+        } else if (optionNumber == MenuOption.VIEW_ALL_USERS.getValue()) {
+            displayAllUsers();
         }
     }
 
@@ -135,5 +138,22 @@ public class MenuService {
                 """);
 
         displayItems(bookings);
+    }
+
+    private static void displayAllUsers() {
+        var users = UserService.getAllUsers();
+
+        if (users.length == 0) {
+            System.out.println("\n\nNo users\n\n");
+            return;
+        }
+
+        System.out.println("""
+                \n
+                ##################
+                All users:
+                """);
+
+        displayItems(users);
     }
 }
