@@ -16,4 +16,8 @@ public class BookingService {
         booking.setReservationEndDateTime(new Date(new Date().getTime() + oneDayInMs * 3));
         System.out.println(booking);
     }
+
+    public static Booking[] getAllBookings() {
+        return BookingDAO.getAllBookings();
+    }
 }

@@ -2,7 +2,7 @@ package com.carlscarbooking.booking;
 
 import java.util.Arrays;
 
-public class BookingDAO {
+class BookingDAO {
     private static final Booking[] bookings;
     private static int nextEmptyBooking;
 
@@ -10,13 +10,13 @@ public class BookingDAO {
         bookings = new Booking[100];
     }
 
-    public static Booking createBooking(Booking booking) {
+    protected static Booking createBooking(Booking booking) {
         bookings[nextEmptyBooking++] = booking;
 
         return booking;
     }
 
-    public static Booking[] getAllBookings() {
-        return Arrays.copyOf(bookings, nextEmptyBooking + 1);
+    protected static Booking[] getAllBookings() {
+        return Arrays.copyOf(bookings, nextEmptyBooking);
     }
 }

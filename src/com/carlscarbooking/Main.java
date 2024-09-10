@@ -13,6 +13,7 @@ public class Main {
 
         while (true) {
             MenuService.displayOptions();
+            System.out.print("Enter your choice: ");
 
             try {
                 userEntry = input.nextInt();
@@ -21,7 +22,7 @@ public class Main {
                 continue;
             }
 
-            if (userEntry == 0) break;
+            if (userEntry == 7) break;
 
             MenuService.handleOption(userEntry);
         }

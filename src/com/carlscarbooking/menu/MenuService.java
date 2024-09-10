@@ -1,7 +1,6 @@
 package com.carlscarbooking.menu;
 
 import com.carlscarbooking.booking.BookingService;
-import com.carlscarbooking.car.Car;
 import com.carlscarbooking.car.CarService;
 
 public class MenuService {
@@ -17,6 +16,11 @@ public class MenuService {
         System.out.println(output);
     }
 
+    /**
+     * Handles user input
+     *
+     * @param optionNumber Represents a users selected option as an integer
+     */
     public static void handleOption(int optionNumber) {
         if (optionNumber == MenuOption.VIEW_AVAILABLE_CARS.getValue()) {
             System.out.println("Inside executeOption if block");
@@ -25,43 +29,93 @@ public class MenuService {
             createBooking();
         } else if (optionNumber == MenuOption.VIEW_ALL_USER_BOOKED_CARS.getValue()) {
             displayBookedCars();
+        } else if (optionNumber == MenuOption.VIEW_ALL_BOOKINGS.getValue()) {
+            displayAllBookings();
         }
     }
 
+    /**
+     * Creates a booking with an associated user and a car
+     */
     private static void createBooking() {
         BookingService.createBooking();
     }
 
-    private static void displayAvailableCars() {
+
+    /**
+     * Displays elements formatted as a numbered list.
+     *
+     * @param items an arbitrary array
+     * @param <T> the type of elements in the array
+     */
+    private static <T> void displayItems(T[] items) {
         int count = 1;
         var output = new StringBuilder();
 
-        for(Car car: CarService.getAllCars()) {
-            output.append(count++).append(". ").append(car.toString()).append("\n");
+        for(T item : items) {
+            output.append(count++).append(". ").append(item.toString()).append("\n");
         }
 
         System.out.println(output);
     }
 
-    private static void displayBookedCars() {
-        int count = 1;
-        var output = new StringBuilder();
-        var cars = CarService.getAllBookedCars();
+    /**
+     * Displays a list of available cars
+     */
+    private static void displayAvailableCars() {
+        var cars = CarService.getAllCars();
 
-        if(cars.length == 0) {
-            output.append("No booked cars\n");
-            System.out.println(output);
+        if (cars.length == 0) {
+            System.out.println("\n\nNo available cars\n\n");
             return;
         }
 
-        for(Car car: cars) {
-            output.append(count++).append(". ").append(car.toString()).append("\n");
-        }
+        System.out.println("""
+                \n
+                ##################
+                Available cars:
+                """);
 
-        System.out.println(output);
+        displayItems(cars);
     }
 
-    public static boolean exit() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    /**
+     * Displays booked cars
+     */
+    private static void displayBookedCars() {
+        var cars = CarService.getAllBookedCars();
+
+        if(cars.length == 0) {
+            System.out.println("\n\nNo booked cars\n\n");
+            return;
+        }
+
+        System.out.println("""
+                \n
+                ##################
+                Booked cars:
+                """);
+
+        displayItems(cars);
+    }
+
+    /**
+     * Displays all bookings
+     */
+    private static void displayAllBookings() {
+        var bookings = BookingService.getAllBookings();
+
+        if (bookings.length == 0) {
+            System.out.println("\n\nNo bookings\n\n");
+            return;
+        }
+
+        System.out.println("""
+                \n
+                ##################
+                All bookings:
+                """);
+
+        displayItems(bookings);
     }
 }
